@@ -21,7 +21,11 @@ async function run() {
     const octokit = github.getOctokit(githubToken);
 
     console.log(`Issue number: ${issueNumber}`);
-    console.log(`TOKEN: ${githubToken}. Type: ${typeof githubToken}`);
+    console.log(
+      `TOKEN: ${githubToken}. Type: ${typeof githubToken}. length: ${
+        githubToken.length
+      }`
+    );
 
     const response = await octokit.rest.issues.createComment({
       ...context.repo,
