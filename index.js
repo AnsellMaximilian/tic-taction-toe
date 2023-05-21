@@ -20,9 +20,11 @@ async function run() {
     const issueNumber = context.payload.issue.number;
     const octokit = github.getOctokit(githubToken);
 
+    console.log(`Issue number: ${issueNumber}`);
+    console.log(`TOKEN: ${githubToken}. Type: ${typeof githubToken}`);
+
     const response = await octokit.rest.issues.createComment({
       ...context.repo,
-      // eslint-disable-next-line @typescript-eslint/camelcase, @typescript-eslint/no-non-null-assertion
       issue_number: issueNumber,
       body: comment,
     });
