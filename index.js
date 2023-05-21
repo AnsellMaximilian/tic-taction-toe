@@ -29,6 +29,7 @@ async function run() {
       body: comment,
     });
   } catch (error) {
+    console.log(error);
     core.setFailed(error.message);
   }
 }
