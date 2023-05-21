@@ -2,10 +2,9 @@ name: "TEST"
 on:
   issue_comment:
     types: [created]
-
+permissions: read-all|write-all
 jobs:
   test:
-    permissions: read-all|write-all
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
