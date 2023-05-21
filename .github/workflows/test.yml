@@ -13,3 +13,5 @@ jobs:
           node-version: 16.x
       - run: npm install
       - uses: ./
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
