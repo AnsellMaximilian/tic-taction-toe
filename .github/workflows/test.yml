@@ -2,6 +2,7 @@ name: "TEST"
 on:
   issue_comment:
     types: [created]
+permissions: write-all
 jobs:
   test:
     runs-on: ubuntu-latest
