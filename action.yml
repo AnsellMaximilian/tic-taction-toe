@@ -1,0 +1,13 @@
+name: "Tic Taction Toe"
+description: "Plays Tic Tac Toe"
+author: "Ansell Maximilian"
+inputs:
+  GITHUB_TOKEN:
+    description: "Github Token for authentication"
+    required: true
+runs:
+  using: "node12"
+  main: "./index.js"
+branding:
+  color: "blue"
+  icon: "bell"
