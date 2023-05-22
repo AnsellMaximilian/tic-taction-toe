@@ -63,7 +63,7 @@ async function run() {
           return new Date(b.created_at) - new Date(a.created_at);
         });
 
-      const prevGameState = parseGameState(comments[0].body);
+      const prevGameState = parseGameState(gameComments[0].body);
 
       const game = new Game();
       game.initialize(prevGameState);
