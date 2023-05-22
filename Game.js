@@ -255,16 +255,16 @@ Game.prototype.checkWin = function () {
 };
 
 Game.prototype.drawRow = function (row) {
-  let row = "";
+  let rowText = "";
   this.myGrid.getRowValues(row).forEach((value, index) => {
     const symbol = value === 1 ? "X" : "O";
     if (index === 0 || index === 2) {
-      row += symbol;
+      rowText += symbol;
     } else {
-      row += ` | ${symbol} | `;
+      rowText += ` | ${symbol} | `;
     }
   });
-  return row;
+  return rowText;
 };
 
 Game.prototype.getBoard = function () {
