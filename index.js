@@ -1,7 +1,7 @@
 const core = require("@actions/core");
 const github = require("@actions/github");
 const Game = require("./Game");
-const { parseGameState } = require("./parseGameState");
+const { parseGameState, parseChoice } = require("./parseGameState");
 
 const githubToken = core.getInput("GITHUB_TOKEN");
 const octokit = github.getOctokit(githubToken);
@@ -67,6 +67,7 @@ async function run() {
 
       const game = new Game();
       game.initialize(prevGameState);
+      game.cellChosen(parseChoice(triggerComment.body.toLowerCase()));
       console.log(game.getState());
       const reply = generateReply(game);
       await postComment(reply);
