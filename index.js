@@ -6,6 +6,7 @@ async function run() {
   try {
     // Preparations
     const githubToken = core.getInput("GITHUB_TOKEN");
+    const octokit = github.getOctokit(githubToken);
 
     const context = github.context;
     console.log(context.payload.comment);
@@ -35,7 +36,6 @@ ${game.getBoard()}
 `;
 
     const issueNumber = context.payload.issue.number;
-    const octokit = github.getOctokit(githubToken);
 
     const response = await octokit.rest.issues.createComment({
       ...context.repo,
