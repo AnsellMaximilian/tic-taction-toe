@@ -1,5 +1,6 @@
 const core = require("@actions/core");
 const github = require("@actions/github");
+const Game = require("./Game");
 
 console.log("You commented!");
 console.log(core.getInput("GITHUB_TOKEN"));
@@ -15,7 +16,10 @@ async function run() {
       return;
     }
 
-    const comment = "HELLO MADAF";
+    // Initialize game
+    const game = new Game();
+
+    const comment = game.getBoard();
 
     const issueNumber = context.payload.issue.number;
     const octokit = github.getOctokit(githubToken);
