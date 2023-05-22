@@ -4,7 +4,7 @@ This github action lets you play games of tic-tac-toe with a bot in the issue co
 
 ## Usage
 
-Here's an example workflow that uses this action. Detailed explanation are given in the following sections
+Here's an example workflow that uses this action. Detailed explanation are given in the following sections:
 
 ```yaml
 name: "TEST"
