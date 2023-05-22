@@ -66,8 +66,8 @@ async function run() {
 
       const game = new Game();
       game.initialize(prevGameState);
-      game.cellChosen(parseChoice(triggerComment.body.toLowerCase()));
       console.log(game.getState());
+      game.cellChosen(parseChoice(triggerComment.body.toLowerCase()));
       const reply = generateReply(game);
       await postComment(reply);
     }
