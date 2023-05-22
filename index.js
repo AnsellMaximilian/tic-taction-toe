@@ -10,7 +10,10 @@ async function run() {
 
     const context = github.context;
     console.log(context.payload.comment);
+
     // Get all comments
+    const issueNumber = context.payload.issue.number;
+
     const comments = await octokit.rest.issues.listComments({
       ...context.repo,
       issue_number: issueNumber,
@@ -34,8 +37,6 @@ Pick a cell!
 
 ${game.getBoard()}
 `;
-
-    const issueNumber = context.payload.issue.number;
 
     const response = await octokit.rest.issues.createComment({
       ...context.repo,
