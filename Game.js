@@ -19,7 +19,7 @@ function Game() {
   this.myGrid = null;
 }
 
-Game.prototype.initialize = function () {
+Game.prototype.initialize = function (prevState) {
   this.myGrid = new Grid();
   this.moves = 0;
   this.winner = 0;

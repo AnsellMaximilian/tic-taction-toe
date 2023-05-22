@@ -18,6 +18,7 @@ async function run() {
 
     // Initialize game
     const game = new Game();
+    game.initialize();
 
     const comment = game.getBoard();
 
@@ -36,6 +37,13 @@ async function run() {
       issue_number: issueNumber,
       body: comment,
     });
+
+    const comments = await octokit.rest.issues.listComments({
+      ...context.repo,
+      issue_number: issueNumber,
+    });
+
+    console.log(comments);
   } catch (error) {
     console.log(error);
     core.setFailed(error.message);
