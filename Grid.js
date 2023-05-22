@@ -120,12 +120,6 @@ Grid.prototype.getDiagIndices = function (arg) {
 
 // Get first index with two in a row (accepts computer or player as argument)
 Grid.prototype.getFirstWithTwoInARow = function (agent) {
-  if (agent !== computer && agent !== player) {
-    console.error(
-      "Function getFirstWithTwoInARow accepts only player or computer as argument."
-    );
-    return undefined;
-  }
   var sum = agent * 2,
     freeCells = shuffleArray(this.getFreeCellIndices());
   for (var i = 0; i < freeCells.length; i++) {

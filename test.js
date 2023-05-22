@@ -13,19 +13,24 @@ game.initialize();
 
 console.log(game.getBoard());
 
-console.log(
-  parseGameState(`<!--GAMESTATE:{"gridCells":[0,0,0,0,0,0,0,0,0],"moves":0,"winner":0,"gameOver":false,"whoseTurn":1}-->
-## TIC-TACTION-TOE
+// console.log(
+//   parseGameState(`<!--GAMESTATE:{"gridCells":[0,0,0,0,0,0,0,0,0],"moves":0,"winner":0,"gameOver":false,"whoseTurn":1}-->
+// ## TIC-TACTION-TOE
 
-### YOUR MOVE (X)
+// ### YOUR MOVE (X)
 
-Pick a cell!
+// Pick a cell!
 
-0 | 1 | 2
----------
-3 | 4 | 5
----------
-6 | 7 | 8
----------
-`)
-);
+// 0 | 1 | 2
+// ---------
+// 3 | 4 | 5
+// ---------
+// 6 | 7 | 8
+// ---------
+// `)
+// );
+
+game.cellChosen(1);
+game.cellChosen(2);
+game.cellChosen(3);
+console.log(game.getBoard());

@@ -45,6 +45,7 @@ Game.prototype.getState = function () {
 };
 
 Game.prototype.cellChosen = function (index) {
+  console.log("MAKING PLAYER MOVE", index);
   if (
     this.myGrid.cells[index] > 0 ||
     this.whoseTurn !== this.player ||
@@ -54,19 +55,20 @@ Game.prototype.cellChosen = function (index) {
     return false;
   }
   this.moves += 1;
-  this.myGrid.cells[index] = player;
+  this.myGrid.cells[index] = this.player;
   // Test if we have a winner:
-  if (moves >= 5) {
+  if (this.moves >= 5) {
     this.winner = this.checkWin();
   }
-  if (winner === 0) {
-    this.whoseTurn = computer;
+  if (this.winner === 0) {
+    this.whoseTurn = this.computer;
     this.makeComputerMove();
   }
   return true;
 };
 
 Game.prototype.makeComputerMove = function () {
+  console.log("MAKING COMPUTER MOVE");
   // debugger;
   if (this.gameOver) {
     return false;
@@ -189,7 +191,7 @@ Game.prototype.makeComputerMove = function () {
   this.myGrid.cells[cell] = this.computer;
   this.moves += 1;
   if (this.moves >= 5) {
-    this.winner = checkWin();
+    this.winner = this.checkWin();
   }
   if (this.winner === 0 && !this.gameOver) {
     this.whoseTurn = this.player;
@@ -259,7 +261,7 @@ Game.prototype.checkWin = function () {
   if (myArr.length === 0) {
     this.winner = 10;
     this.score.ties++;
-    this.endGame(winner);
+    this.endGame(this.winner);
     return this.winner;
   }
 
