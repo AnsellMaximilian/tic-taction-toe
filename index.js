@@ -10,13 +10,29 @@ const context = github.context;
 const issueNumber = context.payload.issue.number;
 
 function generateReply(game) {
+  const winner =
+    game.winner !== 0
+      ? game.winner === game.player
+        ? "Player"
+        : "Computer"
+      : null;
   const reply = `
 <!--GAMESTATE:${JSON.stringify(game.getState())}-->
 ## TIC-TACTION-TOE
 
+${
+  winner
+    ? `
+${winner} WINS!
+`
+    : `
 ### YOUR MOVE (X)
 
-Pick a cell!
+Pick a cell (type tic-taction-toe >>{cell number}<<)!
+
+Example: tic-taction-toe >>3<<
+`
+}
 
 ${game.getBoard()}
 `;
@@ -66,7 +82,6 @@ async function run() {
 
       const game = new Game();
       game.initialize(prevGameState);
-      console.log(game.getState());
       game.cellChosen(parseChoice(triggerComment.body.toLowerCase()));
       const reply = generateReply(game);
       await postComment(reply);
