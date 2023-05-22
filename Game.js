@@ -21,15 +21,27 @@ function Game() {
 
 Game.prototype.initialize = function (prevState) {
   this.myGrid = new Grid();
-  this.moves = 0;
-  this.winner = 0;
-  this.gameOver = false;
-  this.whoseTurn = this.player; // default, this may change
-  for (var i = 0; i <= this.myGrid.cells.length - 1; i++) {
-    this.myGrid.cells[i] = 0;
+  this.moves = prevState ? prevState.moves : 0;
+  this.winner = prevState ? prevState.winner : 0;
+  this.gameOver = prevState ? prevState.gameOver : false;
+  this.whoseTurn = prevState ? prevState.whoseTurn : this.player; // default, this may change
+  if (prevState) {
+    this.myGrid.cells = prevState.gridCells;
+  } else {
+    for (var i = 0; i <= this.myGrid.cells.length - 1; i++) {
+      this.myGrid.cells[i] = 0;
+    }
   }
-  // setTimeout(assignRoles, 500);
-  // debugger;
+};
+
+Game.prototype.getState = function () {
+  return {
+    gridCells: this.myGrid.cells,
+    moves: this.moves,
+    winner: this.winner,
+    gameOver: this.gameOver,
+    whoseTurn: this.whoseTurn,
+  };
 };
 
 Game.prototype.cellChosen = function (index) {
@@ -278,6 +290,8 @@ Game.prototype.getBoard = function () {
   board += "-".repeat(9);
   board += "\n";
   board += this.drawRow(2);
+  board += "\n";
+  board += "-".repeat(9);
   return board;
 };
 

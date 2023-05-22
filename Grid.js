@@ -6,8 +6,8 @@ const { intRandom, sumArray, shuffleArray, isInArray } = require("./helpers");
 
 // Grid constructor
 //=================
-function Grid() {
-  this.cells = new Array(9);
+function Grid(prevCells) {
+  this.cells = prevCells ? prevCells : new Array(9);
 }
 
 // Grid methods
