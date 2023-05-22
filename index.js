@@ -22,9 +22,9 @@ async function run() {
 
     const comment = `
 <!--GAMESTATE:${JSON.stringify(game.getState())}-->
-### TIC-TACTION-TOE
+## TIC-TACTION-TOE
 
-## YOUR MOVE (X)
+### YOUR MOVE (X)
 
 Pick a cell!
 
