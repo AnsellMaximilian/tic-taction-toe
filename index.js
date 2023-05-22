@@ -78,7 +78,10 @@ async function run() {
           return new Date(b.created_at) - new Date(a.created_at);
         });
 
-      console.log("GAME COMMENTS", gameComments);
+      console.log(
+        "GAME COMMENTS DATES",
+        gameComments.map((comment) => new Date(comment.created_at))
+      );
 
       const prevGameState = parseGameState(gameComments[0].body);
 
