@@ -6,9 +6,9 @@ function Game() {
   this.winner = 0;
   this.x = 1;
   this.o = 3;
-  this.player = x;
-  this.computer = o;
-  this.whoseTurn = x;
+  this.player = this.x;
+  this.computer = this.o;
+  this.whoseTurn = this.x;
   this.gameOver = false;
   this.score = {
     ties: 0,
@@ -24,7 +24,7 @@ Game.prototype.initialize = function () {
   this.moves = 0;
   this.winner = 0;
   this.gameOver = false;
-  this.whoseTurn = player; // default, this may change
+  this.whoseTurn = this.player; // default, this may change
   for (var i = 0; i <= this.myGrid.cells.length - 1; i++) {
     this.myGrid.cells[i] = 0;
   }
@@ -257,7 +257,7 @@ Game.prototype.checkWin = function () {
 Game.prototype.drawRow = function (row) {
   let rowText = "";
   this.myGrid.getRowValues(row).forEach((value, index) => {
-    const symbol = value === 1 ? "X" : "O";
+    const symbol = value === 0 ? " " : value === 1 ? "X" : "O";
     if (index === 0 || index === 2) {
       rowText += symbol;
     } else {
@@ -270,13 +270,13 @@ Game.prototype.drawRow = function (row) {
 Game.prototype.getBoard = function () {
   let board = "";
   board += this.drawRow(0);
-  board += "/n";
+  board += "\n";
   board += "-".repeat(9);
-  board += "/n";
+  board += "\n";
   board += this.drawRow(1);
-  board += "/n";
+  board += "\n";
   board += "-".repeat(9);
-  board += "/n";
+  board += "\n";
   board += this.drawRow(2);
   return board;
 };
