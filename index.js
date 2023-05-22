@@ -67,6 +67,7 @@ async function run() {
 
       const game = new Game();
       game.initialize(prevGameState);
+      console.log(game.getState());
       const reply = generateReply(game);
       await postComment(reply);
     }
