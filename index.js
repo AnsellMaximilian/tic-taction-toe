@@ -21,15 +21,15 @@ async function run() {
     game.initialize();
 
     const comment = `
-    <!--GAMESTATE:${JSON.stringify(game.getState())}-->
-    ### TIC-TACTION-TOE
+<!--GAMESTATE:${JSON.stringify(game.getState())}-->
+### TIC-TACTION-TOE
 
-    ## YOUR MOVE (X)
+## YOUR MOVE (X)
 
-    Pick a cell!
+Pick a cell!
 
-    ${game.getBoard()}
-    `;
+${game.getBoard()}
+`;
 
     const issueNumber = context.payload.issue.number;
     const octokit = github.getOctokit(githubToken);
