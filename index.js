@@ -20,17 +20,18 @@ async function run() {
     const game = new Game();
     game.initialize();
 
-    const comment = game.getBoard();
+    const comment = `<!--GAMESTATE:${JSON.stringify(game.getState())}-->
+    ### TIC-TACTION-TOE
+
+    ## YOUR MOVE (X)
+
+    Pick a cell!
+
+    ${game.getBoard()}
+    `;
 
     const issueNumber = context.payload.issue.number;
     const octokit = github.getOctokit(githubToken);
-
-    console.log(`Issue number: ${issueNumber}`);
-    console.log(
-      `TOKEN: ${githubToken}. Type: ${typeof githubToken}. length: ${
-        githubToken.length
-      }`
-    );
 
     const response = await octokit.rest.issues.createComment({
       ...context.repo,
