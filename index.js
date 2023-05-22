@@ -54,7 +54,6 @@ async function run() {
         ...context.repo,
         issue_number: issueNumber,
       });
-      console.log("COMMENTS", comments.data);
       const gameComments = comments.data
         .filter((comment) => {
           return parseGameState(comment.body);
