@@ -269,7 +269,7 @@ Game.prototype.checkWin = function () {
 Game.prototype.drawRow = function (row) {
   let rowText = "";
   this.myGrid.getRowValues(row).forEach((value, index) => {
-    const symbol = value === 0 ? index * row : value === 1 ? "X" : "O";
+    const symbol = value === 0 ? index + row * 3 : value === 1 ? "X" : "O";
     if (index === 0 || index === 2) {
       rowText += symbol;
     } else {
