@@ -50,12 +50,12 @@ async function run() {
       // check for existing game
       // Get all comments that is a game board
 
-      const comments = (
-        await octokit.rest.issues.listComments({
-          ...context.repo,
-          issue_number: issueNumber,
-        })
-      )
+      const comments = await octokit.rest.issues.listComments({
+        ...context.repo,
+        issue_number: issueNumber,
+      });
+      console.log(comments);
+      const gameComments = comments
         .filter((comment) => {
           return parseGameState(comment.body);
         })
