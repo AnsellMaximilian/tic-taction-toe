@@ -2,19 +2,22 @@ const core = require("@actions/core");
 const github = require("@actions/github");
 const Game = require("./Game");
 
-console.log("You commented!");
-console.log(core.getInput("GITHUB_TOKEN"));
-
 async function run() {
   try {
+    // Preparations
     const githubToken = core.getInput("GITHUB_TOKEN");
 
     const context = github.context;
+    console.log(context.payload.comment);
+    // Get all comments
+    const comments = await octokit.rest.issues.listComments({
+      ...context.repo,
+      issue_number: issueNumber,
+    });
 
-    if (context.payload.pull_request == null && context.payload.issue == null) {
-      core.setFailed("No pull request found.");
-      return;
-    }
+    // Check for game start
+
+    // If no game start command, check for active game, else ignore
 
     // Initialize game
     const game = new Game();
@@ -39,13 +42,6 @@ ${game.getBoard()}
       issue_number: issueNumber,
       body: comment,
     });
-
-    const comments = await octokit.rest.issues.listComments({
-      ...context.repo,
-      issue_number: issueNumber,
-    });
-
-    console.log(comments);
   } catch (error) {
     console.log(error);
     core.setFailed(error.message);
